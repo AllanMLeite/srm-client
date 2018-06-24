@@ -26,7 +26,7 @@ export class AppComponent {
     let clienteParaTransmissao: Cliente = Object.assign({},this.cliente)
 
     if(clienteParaTransmissao.limite)
-      clienteParaTransmissao.limite = this.mask.moneyConverter(clienteParaTransmissao.limite)
+      clienteParaTransmissao.limite = this.mask.moneyToFloat(clienteParaTransmissao.limite)
 
     this.appProvider.cadastrar(clienteParaTransmissao)
                     .subscribe(data => {

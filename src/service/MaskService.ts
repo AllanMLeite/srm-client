@@ -21,9 +21,10 @@ export class MaskService {
         input.value = new StringMask('#.##0,00', {reverse: true}).apply(input.value)
     }
 
-    public moneyConverter(value:string){
-        value = value.replace(",","").replace(".","")
-        value = parseInt(value, 10).toString()
+    public moneyToFloat(value:String){
+        value = value.toString().replace(",","")
+        value = value.toString().replace(".","")
+        value = parseInt(value.toString(), 10).toString()
         
         if (value.length > 2){
             value = value.substr(0, value.length -2) + "." + value.substr(value.length -2, value.length)
