@@ -1,5 +1,5 @@
 export class Cliente {  
-  nome: String;
-  limite: number;
-  risco: String;
+  nome: string;
+  limite: string;
+  risco: string;
 }

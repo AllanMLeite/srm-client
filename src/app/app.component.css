@@ -15,3 +15,8 @@
 .label-nenhum-cliente-cadastrado{
     margin-top: 50px;
 }
+
+input.currency {
+    text-align: right;
+    padding-right: 15px;
+}
