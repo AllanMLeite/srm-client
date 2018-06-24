@@ -12,17 +12,20 @@ import { AppService } from './app.service';
 export class AppComponent {
   cliente = new Cliente;
   clientes = new Array<Cliente>()
+  pesquisado = false
 
   constructor(private clienteProvider : ClienteProvider, private service : AppService, private mask : MaskService ){
     this.listarClientes()
   }
-
+  
   listarClientes(){
     this.clienteProvider.listarClientes()
-               .subscribe(data => this.clientes = JSON.parse(data._body),
-                err => alert("Erro ao buscar clientes cadastrados."))
+    .subscribe(data => {
+      this.clientes = JSON.parse(data._body)
+      this.pesquisado = true},
+    err => alert("Erro ao buscar clientes cadastrados."))
   }
-
+  
   salvar(){
     let clienteParaTransmissao: Cliente = Object.assign({},this.cliente)
 

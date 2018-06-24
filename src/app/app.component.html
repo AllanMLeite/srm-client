@@ -23,7 +23,7 @@
   </form>
 </div>
 
-<div id="listagemClientes">
+<div id="listagemClientes" *ngIf="pesquisado">
   <div class="label-nenhum-cliente-cadastrado centralizado" *ngIf="!clientes.length">  
     Nenhum cliente cadastrado
   </div>  

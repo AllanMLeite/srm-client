@@ -42,6 +42,9 @@ describe('MaskService:', () => {
         retorno = maskService.floatToMoney("12345.67")        
         expect(retorno).toEqual("12.345,67")
 
+        retorno = maskService.floatToMoney("1234")        
+        expect(retorno).toEqual("1.234,00")
+
         retorno = maskService.floatToMoney("5.67")        
         expect(retorno).toEqual("5,67")
 

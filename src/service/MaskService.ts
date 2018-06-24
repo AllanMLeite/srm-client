@@ -38,9 +38,16 @@ export class MaskService {
     }
 
     public floatToMoney(value:String) : String{
-        value = value.toString().replace(",","")
-        value = value.replace(".","")
-        value = parseInt(value.toString(), 10).toString()
+        if(!value)
+            return;
+
+        if(value.toString().indexOf(".") >= 0){
+            value = value.toString().replace(",","")
+            value = value.replace(".","")
+            value = parseInt(value.toString(), 10).toString()            
+        } else {
+            value = value + "00"
+        }
         
         return new StringMask('#.##0,00', {reverse: true}).apply(value)
     }
