@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
-import { AppProvider } from './app.provider';
 import { FormsModule } from '@angular/forms';
 import { MaskService } from '../service/MaskService';
+import { GenericProvider } from '../provider/generic.provider';
+import { ClienteProvider } from '../provider/cliente.provider';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,10 @@ import { MaskService } from '../service/MaskService';
     HttpModule,
     FormsModule
   ],
-  providers: [AppProvider, MaskService],
+  providers: [GenericProvider,
+              ClienteProvider, 
+              MaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

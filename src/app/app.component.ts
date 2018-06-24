@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AppProvider } from './app.provider';
 import { Cliente } from '../model/Cliente';
 import { MaskService } from '../service/MaskService';
+import { ClienteProvider } from '../provider/cliente.provider';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +12,12 @@ export class AppComponent {
   cliente = new Cliente;
   clientes = new Array<Cliente>()
 
-  constructor(private appProvider : AppProvider, private mask : MaskService ){
+  constructor(private clienteProvider : ClienteProvider, private mask : MaskService ){
     this.listarClientes()
   }
 
   listarClientes(){
-    this.appProvider.listarClientes()
+    this.clienteProvider.listarClientes()
                .subscribe(data => this.clientes = JSON.parse(data._body),
                 err => alert("Erro ao buscar clientes cadastrados."))
   }
@@ -28,7 +28,7 @@ export class AppComponent {
     if(clienteParaTransmissao.limite)
       clienteParaTransmissao.limite = this.mask.moneyToFloat(clienteParaTransmissao.limite)
 
-    this.appProvider.cadastrar(clienteParaTransmissao)
+    this.clienteProvider.cadastrar(clienteParaTransmissao)
                     .subscribe(data => {
                       this.listarClientes()
                       alert("Cliente cadastrado com sucesso.")
