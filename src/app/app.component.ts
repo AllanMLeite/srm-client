@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Cliente } from '../model/Cliente';
 import { MaskService } from '../service/MaskService';
 import { ClienteProvider } from '../provider/cliente.provider';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   cliente = new Cliente;
   clientes = new Array<Cliente>()
 
-  constructor(private clienteProvider : ClienteProvider, private mask : MaskService ){
+  constructor(private clienteProvider : ClienteProvider, private service : AppService, private mask : MaskService ){
     this.listarClientes()
   }
 
@@ -28,11 +29,16 @@ export class AppComponent {
     if(clienteParaTransmissao.limite)
       clienteParaTransmissao.limite = this.mask.moneyToFloat(clienteParaTransmissao.limite)
 
-    this.clienteProvider.cadastrar(clienteParaTransmissao)
-                    .subscribe(data => {
-                      this.listarClientes()
-                      alert("Cliente cadastrado com sucesso.")
-                      this.cliente = new Cliente
-                    }, rej => alert(JSON.parse(rej._body).message))
+    try {
+      this.service.validarCliente(clienteParaTransmissao)
+      this.clienteProvider.cadastrar(clienteParaTransmissao)
+      .subscribe(data => {
+        this.listarClientes()
+        alert("Cliente cadastrado com sucesso.")
+        this.cliente = new Cliente
+      }, rej => alert(JSON.parse(rej._body).message))
+    } catch (error) {
+      alert(error.message)
+    }
   }
 }

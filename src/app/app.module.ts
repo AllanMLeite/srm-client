@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MaskService } from '../service/MaskService';
 import { GenericProvider } from '../provider/generic.provider';
 import { ClienteProvider } from '../provider/cliente.provider';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ClienteProvider } from '../provider/cliente.provider';
   ],
   providers: [GenericProvider,
               ClienteProvider, 
-              MaskService
+              MaskService,
+              AppService
   ],
   bootstrap: [AppComponent]
 })
