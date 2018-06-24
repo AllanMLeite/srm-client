@@ -6,9 +6,8 @@ import { Cliente } from '../model/Cliente';
 @Injectable()
 export class AppProvider {
 
-  url: string = 'https://infinite-basin-63968.herokuapp.com/cliente';
-  //url: string = 'http://localhost:8080/cliente';
-
+  url: string = 'https://srm-api.herokuapp.com/cliente';
+  
   constructor(private http: Http) {
   }
 
