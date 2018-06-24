@@ -26,4 +26,17 @@ describe('AppService:', () => {
         cliente.limite = null
         validaSeMensagemExibida(cliente, "Informe o limite.")
     })
+
+    it('deve exibir mensagem de obrigatoriedade para risco', () => {
+        let mensagemEsperada= "Informe o risco."
+        let cliente = new Cliente
+        cliente.nome = "Adriano"
+        cliente.limite = "8888"
+        
+        cliente.risco = " "
+        validaSeMensagemExibida(cliente, mensagemEsperada)
+
+        cliente.risco = null
+        validaSeMensagemExibida(cliente, mensagemEsperada)
+    })
 })
