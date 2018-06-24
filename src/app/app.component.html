@@ -4,16 +4,24 @@
     Novo Cliente
   </h1>
 
-  <form>
+  <form #form="ngForm" id="form">
     <div class="form-group">
       <label for="nomeCliente">Nome</label>
-      <input type="text" class="form-control" id="nomeCliente" placeholder="novo@cliente.com">
+      <input type="text" class="form-control" [(ngModel)]="cliente.nome" name="nome" id="nomeCliente" placeholder="novo@cliente.com">
     </div>
     <div class="form-group">
       <label for="limiteCredito">Limite de Crédito</label>
-      <input type="number" class="form-control" id="limiteCredito" placeholder="R$ 9.999,99">
+      <input type="number" class="form-control" [(ngModel)]="cliente.limite" name="limite" id="limiteCredito" placeholder="R$ 9.999,99">
     </div>
-    <button type="submit" class="btn btn-default">Cadastrar</button>
+    <div class="form-group">
+      <label for="risco">Risco</label>
+      <select class="form-control" [(ngModel)]="cliente.risco" name="risco" id="risco">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+    </div>
+    <button type="submit" (click)="salvar(form)" class="btn btn-default">Cadastrar</button>
   </form>
 </div>
 <h2 class="centralizado">Clientes já cadastrados: </h2>
@@ -32,7 +40,7 @@
       <tr *ngFor="let cliente of clientes">
         <th scope="row">{{cliente.id}}</th>
         <td>{{cliente.nome}}</td>
-        <td>{{cliente.limite}}</td>
+        <td>R$ {{cliente.limite}}</td>
         <td>{{cliente.risco}}</td>
         <td>{{cliente.taxa}}%</td>
       </tr>      

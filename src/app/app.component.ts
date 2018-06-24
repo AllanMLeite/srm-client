@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppProvider } from './app.provider';
+import { Cliente } from '../model/Cliente';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,25 @@ import { AppProvider } from './app.provider';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  
-  cliente;
-  clientes;
+  cliente = new Cliente;
+  clientes = new Array<Cliente>()
 
   constructor(private appProvider : AppProvider ){
-    appProvider.listarClientes().toPromise().then(data => this.clientes =JSON.parse(data._body))
+    this.listarClientes()
+  }
+
+  listarClientes(){
+    this.appProvider.listarClientes()
+               .subscribe(data => this.clientes = JSON.parse(data._body),
+                err => alert("Erro ao buscar clientes cadastrados."))
+  }
+
+  salvar(){
+      this.appProvider.cadastrar(this.cliente)
+                      .subscribe(data => {
+                        this.listarClientes()
+                        alert("Cliente cadastrado com sucesso.")
+                        this.cliente = new Cliente
+                      }, rej => alert(JSON.parse(rej._body).message))
   }
 }
