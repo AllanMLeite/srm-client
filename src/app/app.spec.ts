@@ -16,4 +16,14 @@ describe('AppService:', () => {
         cliente.nome = null
         validaSeMensagemExibida(cliente, "Informe o nome.")
     })
+
+    it('deve exibir mensagem de obrigatoriedade para nome', () => {
+        let cliente = new Cliente
+        cliente.nome = "Adriano"
+        cliente.limite = " "
+        validaSeMensagemExibida(cliente, "Informe o limite.")
+
+        cliente.limite = null
+        validaSeMensagemExibida(cliente, "Informe o limite.")
+    })
 })
