@@ -1,12 +1,7 @@
-<head>
-
-</head>
-<body>
-  <div class="centralizado">
-    <h1>
-      Novo Cliente
-    </h1>
-    
+<div id="cadastroCliente" class="centralizado">
+  <h1>
+    Novo Cliente
+  </h1>    
   <form #form="ngForm" id="form">
     <div class="form-group">
       <label for="nomeCliente">Nome</label>
@@ -28,33 +23,31 @@
   </form>
 </div>
 
-<div class="label-nenhum-cliente-cadastrado centralizado" *ngIf="!clientes.length">  
-  Nenhum cliente cadastrado
+<div id="listagemClientes">
+  <div class="label-nenhum-cliente-cadastrado centralizado" *ngIf="!clientes.length">  
+    Nenhum cliente cadastrado
+  </div>  
+  <div *ngIf="clientes.length">  
+    <h2 class="centralizado">Clientes cadastrados </h2>    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Limite</th>
+          <th scope="col">Risco</th>
+          <th scope="col">Taxa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <th scope="row">{{cliente.id}}</th>
+          <td>{{cliente.nome}}</td>
+          <td>R$ {{this.mask.floatToMoney(cliente.limite)}}</td>
+          <td>{{cliente.risco}}</td>
+          <td>{{cliente.taxa}}%</td>
+        </tr>      
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<div *ngIf="clientes.length">  
-  <h2 class="centralizado">Clientes cadastrados </h2>
-  
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Limite</th>
-        <th scope="col">Risco</th>
-        <th scope="col">Taxa</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <th scope="row">{{cliente.id}}</th>
-        <td>{{cliente.nome}}</td>
-        <td>R$ {{this.mask.floatToMoney(cliente.limite)}}</td>
-        <td>{{cliente.risco}}</td>
-        <td>{{cliente.taxa}}%</td>
-      </tr>      
-    </tbody>
-  </table>
-</div>
-</body>
-
