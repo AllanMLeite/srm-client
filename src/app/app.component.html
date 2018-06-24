@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="centralizado">
   <h1>
     Novo Cliente
@@ -24,9 +23,15 @@
     <button type="submit" (click)="salvar(form)" class="btn btn-default">Cadastrar</button>
   </form>
 </div>
-<h2 class="centralizado">Clientes já cadastrados: </h2>
 
-<table class="table table-striped">
+<div class="label-nenhum-cliente-cadastrado centralizado" *ngIf="!clientes.length">  
+  Nenhum cliente cadastrado
+</div>
+
+<div *ngIf="clientes.length">  
+  <h2 class="centralizado">Clientes cadastrados </h2>
+  
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -46,4 +51,5 @@
       </tr>      
     </tbody>
   </table>
-
+</div>
+  
