@@ -1,0 +1,13 @@
+.form-group {
+    width: 50%;
+    margin: auto;
+    min-width: 280px;
+}
+
+.form-control {
+    margin-bottom: 1.2em;
+}
+
+.centralizado {
+    text-align:center;
+}

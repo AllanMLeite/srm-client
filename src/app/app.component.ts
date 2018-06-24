@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppProvider } from './app.provider';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  
+  cliente;
+  clientes;
+
+  constructor(private appProvider : AppProvider ){
+    appProvider.listarClientes().toPromise().then(data => this.clientes =JSON.parse(data._body))
+  }
 }
