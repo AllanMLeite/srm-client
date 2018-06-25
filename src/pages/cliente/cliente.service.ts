@@ -17,7 +17,7 @@ export class ClienteService {
 
   validaLimitePreenchido(limite : String){
     if(!limite || !limite.trim())
-      throw new Error("Informe o limite")
+      throw new Error("Informe o limite.")
   }
 
   validaRiscoPreenchido(risco : String){
