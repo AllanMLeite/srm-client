@@ -35,7 +35,6 @@ jobs:
         
       # run tests!
       - run: yarn test
-
   deploy:
     machine:
         enabled: true
@@ -52,4 +51,4 @@ jobs:
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:ec7f64a9-e43e-4438-910b-89b09328f042@git.heroku.com/srm-client.git master
+            git push https://heroku:6c7d38bf-b556-436d-95e1-032327014f64@git.heroku.com/srm-client.git master
