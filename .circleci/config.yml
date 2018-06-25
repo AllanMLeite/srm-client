@@ -36,20 +36,8 @@ jobs:
       # run tests!
       - run: yarn test
 
-  deploy:
-    machine:
-        enabled: true
-    working_directory: ~/srm-client
-    environment:
-      - HEROKU_APP: srm-client
-    steps:
-      - restore_cache:
-          key: v1-repo-{{ .Environment.CIRCLE_SHA1 }}
-      - restore_cache:
-          key: v1-bundle-{{ checksum "Gemfile.lock" }}
-      - restore_cache:
-          key: v1-assets-{{ .Environment.CIRCLE_SHA1 }}
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:ec7f64a9-e43e-4438-910b-89b09328f042@git.heroku.com/srm-client.git master
+  deployment:
+    staging:
+      branch: master
+      heroku:
+        appname: srm-client
