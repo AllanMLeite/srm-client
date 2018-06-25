@@ -1,27 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
-import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { MaskService } from '../service/MaskService';
 import { GenericProvider } from '../provider/generic.provider';
 import { ClienteProvider } from '../provider/cliente.provider';
-import { AppService } from './app.service';
+import { ClienteComponent } from '../pages/cliente/cliente.component';
+import { ClienteModule } from '../pages/cliente/cliente.module';
 
 @NgModule({
   declarations: [
-    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    ClienteModule
   ],
   providers: [GenericProvider,
               ClienteProvider, 
-              MaskService,
-              AppService
+              MaskService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ClienteComponent]
 })
 export class AppModule { }

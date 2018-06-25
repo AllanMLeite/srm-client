@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Cliente } from '../model/Cliente';
+import { Cliente } from '../../model/Cliente';
 
 @Injectable()
-export class AppService {
+export class ClienteService {
 
   validarCliente(cliente : Cliente) {
     this.validaNomePreenchido(cliente.nome)

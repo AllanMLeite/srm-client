@@ -1,8 +1,9 @@
-import { AppService } from "./app.service";
-import { Cliente } from "../model/Cliente";
+import { ClienteService } from "./cliente.service";
+import { Cliente } from "../../model/Cliente";
+
 
 describe('AppService:', () => {
-    let service = new AppService
+    let service = new ClienteService
     
     function validaSeMensagemExibida(cliente : Cliente, mensagem : string){
         expect(() => service.validarCliente(cliente)).toThrow(new Error(mensagem))

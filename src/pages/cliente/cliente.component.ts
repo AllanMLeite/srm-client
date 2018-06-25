@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import { Cliente } from '../model/Cliente';
-import { MaskService } from '../service/MaskService';
-import { ClienteProvider } from '../provider/cliente.provider';
-import { AppService } from './app.service';
+import { Cliente } from '../../model/Cliente';
+import { ClienteProvider } from '../../provider/cliente.provider';
+import { ClienteService } from './cliente.service';
+import { MaskService } from '../../service/MaskService';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './cliente.component.html',
+  styleUrls: ['./cliente.component.css']
 })
-export class AppComponent {
+export class ClienteComponent {
   cliente = new Cliente;
   clientes = new Array<Cliente>()
   pesquisado = false
 
-  constructor(private clienteProvider : ClienteProvider, private service : AppService, private mask : MaskService ){
+  constructor(private clienteProvider : ClienteProvider, private service : ClienteService, private mask : MaskService){
     this.listarClientes()
   }
   
