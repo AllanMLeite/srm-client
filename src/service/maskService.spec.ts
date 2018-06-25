@@ -16,6 +16,11 @@ describe('MaskService:', () => {
         input.value = "3"
         maskService.money(input)
         expect(input.value).toEqual("0,03")
+
+        input.value = "112233445"
+        maskService.money(input)
+        expect(input.value).toEqual("112.233,44")
+
     })
 
     it('deve converter para float para salvar na api', () => {

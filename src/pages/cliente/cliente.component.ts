@@ -44,4 +44,9 @@ export class ClienteComponent {
       alert(error.message)
     }
   }
+
+  maskMoney(input:HTMLFormElement){
+    this.mask.money(input)
+    this.cliente.limite = input.value.toString()
+  }
 }
